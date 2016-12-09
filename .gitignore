@@ -1,0 +1,6 @@
+venv/
+aiohttp
+registries/config/
+*.pyc
+__pycache__
+.DS_Store
