@@ -6,7 +6,7 @@ import jinja2
 
 import aiohttp_jinja2
 from aiohttp import web
-# from aiohttpdemo_polls.middlewares import setup_middlewares
+from registry_app.middlewares import setup_middlewares
 from registry_app.routes import setup_routes
 from registry_app.models import setup_models
 from registry_app.utils import load_config

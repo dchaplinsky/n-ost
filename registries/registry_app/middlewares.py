@@ -5,14 +5,18 @@ from aiohttp import web
 async def handle_404(request, response):
     response = aiohttp_jinja2.render_template('404.html',
                                               request,
-                                              {})
+                                              {},
+                                              )
+    response.set_status(404)
     return response
 
 
 async def handle_500(request, response):
     response = aiohttp_jinja2.render_template('500.html',
                                               request,
-                                              {})
+                                              {},
+                                              )
+    response.set_status(500)
     return response
 
 
