@@ -26,12 +26,7 @@ def init():
     aiohttp_jinja2.setup(
         app, loader=jinja2.PackageLoader('registry_app', 'templates'))
 
-    # # create connection to the database
-    # app.on_startup.append(init_pg)
-    # # shutdown db connection on exit
-    # app.on_cleanup.append(close_pg)
-    # setup views and routes
-    # setup_middlewares(app)
+    setup_middlewares(app)
     setup_routes(app)
     setup_models(app)
 
