@@ -1,6 +1,6 @@
 import pathlib
 
-from .views import index
+from .views import index, whitelabel, api
 
 PROJECT_ROOT = pathlib.Path(__file__).parent
 
@@ -11,3 +11,5 @@ def setup_routes(app):
                           name='static')
 
     app.router.add_get('/', index)
+    app.router.add_get('/wl', whitelabel)
+    app.router.add_get('/api', api)

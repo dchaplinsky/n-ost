@@ -70,7 +70,7 @@ class RegistryModel(object):
 
         resp = []
         wb = load_workbook(BytesIO(xlsx), read_only=True)
-        ws = wb.worksheets[0]
+        ws = wb.worksheets[1]
         header = []
 
         def get_row_values(r):

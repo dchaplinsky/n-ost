@@ -12,16 +12,16 @@
     <meta name="title" content="Network" />
     <meta name="description" content="Over 250 journalists and media activists from all over Europe come together in our Network. They combine vast knowledge of their respective countries with thematic expertise, journalistic professionalism and engagement. " />
     <meta name="Copyright" content="n-ost, Berlin, 2016" />
- -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{ url('static', filename='favicon.ico') }}" type="image/x-icon" rel="icon"/><link href="{{ url('static', filename='favicon.ico') }}" type="image/x-icon" rel="shortcut icon"/>
-    <link rel="stylesheet" href="{{ url('static', filename='css/build.min.css') }}" />
-    <link rel="stylesheet" href="{{ url('static', filename='css/gridly.min.css') }}" />
-    <link rel="stylesheet" href="{{ url('static', filename='css/nost-icons.css') }}" />
-    <link rel="stylesheet" href="{{ url('static', filename='css/datatables.min.css') }}" />
-    <link rel="stylesheet" href="{{ url('static', filename='css/settings.css') }}" />
+-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="{{ url('static', filename='favicon.ico') }}" type="image/x-icon" rel="icon"/><link href="{{ url('static', filename='favicon.ico') }}" type="image/x-icon" rel="shortcut icon"/>
+<link rel="stylesheet" href="{{ url('static', filename='css/build.min.css') }}" />
+<link rel="stylesheet" href="{{ url('static', filename='css/gridly.min.css') }}" />
+<link rel="stylesheet" href="{{ url('static', filename='css/nost-icons.css') }}" />
+<link rel="stylesheet" href="{{ url('static', filename='css/datatables.min.css') }}" />
+<link rel="stylesheet" href="{{ url('static', filename='css/settings.css') }}" />
 
-    <script src="{{ url('static', filename='js/modernizr-3.2.0.base.js') }}"></script>
+<script src="{{ url('static', filename='js/modernizr-3.2.0.base.js') }}"></script>
 
 {#    <!-- Twitter: see https://dev.twitter.com/docs/cards/types/summary-card for details -->
     <meta name="twitter:card" content="summary">
@@ -35,276 +35,227 @@
     <meta property="og:description" content="Over 250 journalists and media activists from all over Europe come together in our Network. They combine vast knowledge of their respective countries with thematic expertise, journalistic professionalism and engagement. " />
     <meta property="og:url" content="http://www.n-ost.org/network" />
     <meta property="og:image" content="http://www.n-ost.org/img/gfx/n-ost_logo.png" />
-#}
+    #}
 
 </head>
 <body>
-<div class="wrapper">
+    <div class="wrapper">
+        <header class="contentbox header border-bottom">
+            <div class="row">
+                <a href="/"><img src="{{ url('static', filename='img/n-ost_logo.png') }}" alt="n-ost Logo" class="logo"/></a>
+                <a class="toogle-menu color-default align-center js-toggle-menu" href="#"><span>&#9776;</span></a>
 
-    <header class="contentbox header border-bottom">
-    <div class="row">
+                <nav class="menu js-menu-container">
+                    <ol class="unstyled-list active">
+                        {#                 <li><a href="/media-ngo" class="">Media NGO</a></li>
+                        <li><a href="/agency" class="">Agency</a></li>
+                        <li><a href="/network" class="active">Network</a></li>
+                        <li><a href="/about-us" class="">About Us</a></li> #}
+                    </ol>
 
-        <a href="/"><img src="{{ url('static', filename='img/n-ost_logo.png') }}" alt="n-ost Logo" class="logo"/></a>
-        <a class="toogle-menu color-default align-center js-toggle-menu" href="#"><span>&#9776;</span></a>
+                    <form method="post" accept-charset="utf-8" id="jsSearchForm" class="toggle-flyout form-inline" action="/pages/search"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>                <input type="text" name="term" placeholder="Search" pattern=".*" required="required">
+                        <button title="Search"><i class="nost-icon nost-icon-search"></i></button>
+                    </form>
+                    <form method="post" accept-charset="utf-8" id="jsLoginForm" class="toggle-flyout login-form" action="/users/login">
+                        <div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>
+                        <h3>Member login </h3>
+                        <div class="input text required">
+                            <input type="text" name="username" placeholder="Username " pattern=".*" required="required" id="username"/>
+                        </div>
+                        <div class="input password required">
+                            <input type="password" name="password" placeholder="Password" pattern=".*" required="required" id="password" value=""/>
+                            <a href="/users/reset-password">Did you forget your password?</a>
+                        </div>
 
-        <nav class="menu js-menu-container">
-            <ol class="unstyled-list active">
-{#                 <li><a href="/media-ngo" class="">Media NGO</a></li>
-                <li><a href="/agency" class="">Agency</a></li>
-                <li><a href="/network" class="active">Network</a></li>
-                <li><a href="/about-us" class="">About Us</a></li> #}
-            </ol>
-        
-            <form method="post" accept-charset="utf-8" id="jsSearchForm" class="toggle-flyout form-inline" action="/pages/search"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>                <input type="text" name="term" placeholder="Search" pattern=".*" required="required">
-                <button title="Search"><i class="nost-icon nost-icon-search"></i></button>
-            </form>
-                    <form method="post" accept-charset="utf-8" id="jsLoginForm" class="toggle-flyout login-form" action="/users/login"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>                <h3>Member login </h3>
-                <div class="input text required"><input type="text" name="username" placeholder="Username " pattern=".*" required="required" id="username"/></div>                <div class="input password required"><input type="password" name="password" placeholder="Password" pattern=".*" required="required" id="password" value=""/><a href="/users/reset-password">Did you forget your password?</a></div>                <div><button>Log on</button></div>
-            </form>                    <div class="lang-switch-mobile align-center text-uppercase">
-                <a href="/language/de?redirect=%2Fnetzwerk">Russian</a> /
-                English            </div>
-        </nav>
+                        <div><button>Log on</button></div>
+                    </form>
+                    <div class="lang-switch-mobile align-center text-uppercase">
+                        <a href="/language/de?redirect=%2Fnetzwerk">Russian</a> /English
+                    </div>
+                </nav>
 
-        <section class="lang-switch-user-box">
-            <div class="lang-switch align-center">
-                <a href="/language/de?redirect=%2Fnetzwerk" title="Russian">Ru</a> /
-                EN            </div>
-            <div class="user-login-search">
-                <a href="#" class="js-toggle-form" data-target="#jsLoginForm"><i class="nost-icon nost-icon-login"></i></a>                <a href="#" class="js-toggle-form" data-target="#jsSearchForm"><i class="nost-icon nost-icon-search"></i></a>            </div>
-        </section>
+                <section class="lang-switch-user-box">
+                    <div class="lang-switch align-center">
+                        <a href="/language/de?redirect=%2Fnetzwerk" title="Russian">Ru</a> /
+                        EN
+                    </div>
+                    <div class="user-login-search">
+                        <a href="#" class="js-toggle-form" data-target="#jsLoginForm"><i class="nost-icon nost-icon-login"></i></a>
+                        <a href="#" class="js-toggle-form" data-target="#jsSearchForm"><i class="nost-icon nost-icon-search"></i></a>
+                    </div>
+                </section>
 
-    </div>
-</header>
+            </div>
+        </header>
+        <article>
+            <div class="contentbox bg-color-orange">
+                <div class="row">
+                    <div class="col hero-slogan align-center">
+                        <h1>Over 150 links to different public registers and datasets had been collected by <span>n-vestigate</span> partners in searchable database to make journalistic research easier.</h1>
+                    </div>
+                </div>
 
-    
-    <article>
-        <div class="contentbox bg-color-orange">
-    <div class="row">
-        <div class="col hero-slogan align-center">
-            <h1>Over 150 registries and databases from all over Europe come together in our <span>Network</span>. </h1>
-    </div>
-</div>
 
-<div id="jsPageContent" class="contentbox bg-color-grey border-bottom hidden">
-    <div class="row article-container">
-        <div class="col">
-            <p>n-ost is a network for media workers with special focus on Eastern Europe, and for experts on Eastern Europe interested in the media. Our members are:</p><p>- Media workers and experts on Eastern Europe,</p><p>- Photographers, print and radio journalists,</p><p>- Scholars, project managers, trainers, translators, film makers, artists,</p><p>- Eastern and Western Europeans who live or have lived in Eastern Europe,</p><p>- freelance journalists and other independent contractors, for whom our network serves as a catalyst, platform, springboard, or forum.</p>        </div>
-    </div>
-</div>
+                <!-- contentbox -->
+                <div class="contentbox bg-color-grey border-bottom">
+                    <div class="row">
+                        <div class="col align-center">
+                            <span class="anchor" id="network_filter"></span>
+                            <h1 class="h0">Search registries</h1>
+                            <p>Our system allows finding a link to dataset needed through context search as well as using filters by: type of data, country, type of access (free/paid) and status (official/inofficial).</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% include "table.html" %}
+                        <!-- /contacts-filter-list -->
 
-<!-- contentbox -->
-<div class="contentbox bg-color-grey border-bottom">
-    <div class="row">
-        <div class="col align-center">
-            <span class="anchor" id="network_filter"></span>
-            <h1 class="h0">Search registries</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col align-center">
-        <form class="form-inline" id="jsContactForm" action="/contacts/ajax-search-contacts" data-url="/contacts/ajax-search-contacts" novalidate="novalidate">
-    <input type="text" name="term" placeholder="Search registries" pattern=".*" required="required" id="jsSearchInput">
-    <button title="Search"><i class="nost-icon nost-icon-search"></i></button>
-</form>
-<!-- contacts-filter-list -->
-    <table id="registry" class="display" width="100%" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Country</th>
-                <th>Sector</th>
-                <th>Title</th>
-                <th>Paid</th>
-                <th>Official</th>
-                <th>Contact</th>
-                <th>Comment</th>
-                <th>Link</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>Country</th>
-                <th>Sector</th>
-                <th>Title</th>
-                <th>Paid</th>
-                <th>Official</th>
-                <th>Contact</th>
-                <th>Comment</th>
-                <th>Link</th>
-            </tr>
-        </tfoot>
-        <tbody>
-            {% for registry in registries %}
-            <tr>
-                <td>
-                    {{ registry.country }}
-                </td>
-                <td>
-                    {{ registry.sector }}
-                </td>
-                <td>
-                    {{ registry.title }}
-                </td>
-                <td>
-                    {{ registry.paid }}
-                </td>
-                <td>
-                    {{ registry.official }}
-                </td>
-                <td>
-                    {{ registry.contact or "" }}
-                </td>
-                <td>
-                    {{ registry.comments or "" }}
-                </td>
-                <td>
-                    <a href="{{ registry.link }}" target="_blank">Link</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                        <!-- contacts-container -->
+                        <div id="jsContacts" class="contacts-container clearfix">
 
-</div>
-<!-- /contacts-filter-list -->
+                        </div>
+                        <!-- /contacts-container -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col align-center">
+                        <!-- <div class="filler"></div> -->
+                        <a data-target="#jsPageContent" class="btn load-more" title="Help" href="#">Still need help?</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /contentbox -->
 
-<!-- contacts-container -->
-<div id="jsContacts" class="contacts-container clearfix">
+        </article>
 
-</div>
-<!-- /contacts-container -->
-        </div>
-    </div>
-    <div class="row">
-        <div class="col align-center">
-            <div class="filler"></div>
-        </div>
-    </div>
-</div>
-<!-- /contentbox -->
-
-    </article>
-
-    <!-- sub-footer -->
-<div class="contentbox sub-footer border-bottom bg-color-grey-2">
-    <div class="row menu-3 text-uppercase">
-        <div class="col">
-            <div class="content align-center">
-                <a href="/newsletter/subscribe"><i class="nost-icon nost-icon-newsletter"></i><span>Order our newsletter</span></a>            </div>
-        </div>
-        <div class="col">
-            <div class="content align-center">
-                <a href="/68-spenden"><i class="nost-icon nost-icon-money"></i><span>Support n-ost</span></a>            </div>
-        </div>
-        <div class="col">
-            <div class="content align-center">
-                <a href="/69-mitglied-werden"><i class="nost-icon nost-icon-mitglieder"></i><span>Become a member</span></a>            </div>
-        </div>
-    </div>
-</div>
-<div class="contentbox sub-footer border-bottom bg-color-grey-2 sub-menu-category">
-        <div class="row text-uppercase">
-        <div class="col">
-            <div class="content">
-                <h5><a href="/media-ngo" class="color-default">Media NGO</a></h5>
-                
-<ul class="unstyled-list">
-        <li><a href="/media-ngo#connecting-journalists" class="color-default">Connecting journalists</a></li>
-        <li><a href="/media-ngo#supporting-research" class="color-default">Supporting research</a></li>
-        <li><a href="/media-ngo#strengthening-investigative-journalism" class="color-default">Strengthening Investigative Journalism</a></li>
-        <li><a href="/media-ngo#imparting-competency" class="color-default">Imparting Competency</a></li>
-</ul>
+        <!-- sub-footer -->
+        <div class="contentbox sub-footer border-bottom bg-color-grey-2">
+            <div class="row menu-3 text-uppercase">
+                <div class="col">
+                    <div class="content align-center">
+                        <a href="https://www.rise.md"><img src="{{ url('static', filename='img/rise_md.png') }}" /></a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="content align-center">
+                        <a href="https://irrp.org.ua/"><img src="{{ url('static', filename='img/yrrp.png') }}" /></a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="content align-center">
+                        <a href="https://hetq.am/eng/"><img src="{{ url('static', filename='img/hetq_am.png') }}" /></a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="content align-center">
+                        <a href="http://liberali.ge/"><img src="{{ url('static', filename='img/liberali_ge.png') }}" /></a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col">
-            <div class="content">
-                <h5><a href="/agency" class="color-default">Agency</a></h5>
-                
-<ul class="unstyled-list">
-        <li><a href="/agency#the-editorial-team-for-foreign-reporting" class="color-default">The Editorial Team for Foreign Reporting</a></li>
-            <li><a href="/agency#products" class="color-default">Our products</a></li>
-        <li><a href="/agency#portfolio" class="color-default">Portfolio</a></li>
-        <li><a href="/agency#references" class="color-default">References</a></li>
-</ul>
+        <div class="contentbox sub-footer border-bottom bg-color-grey-2 sub-menu-category">
+            <div class="row text-uppercase">
+                <div class="col">
+                    <div class="content">
+                        <h5><a href="http://n-ost.org/media-ngo" class="color-default">Media NGO</a></h5>
+
+                        <ul class="unstyled-list">
+                            <li><a href="http://n-ost.org/media-ngo#connecting-journalists" class="color-default">Connecting journalists</a></li>
+                            <li><a href="http://n-ost.org/media-ngo#supporting-research" class="color-default">Supporting research</a></li>
+                            <li><a href="http://n-ost.org/media-ngo#strengthening-investigative-journalism" class="color-default">Strengthening Investigative Journalism</a></li>
+                            <li><a href="http://n-ost.org/media-ngo#imparting-competency" class="color-default">Imparting Competency</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="content">
+                        <h5><a href="http://n-ost.org/agency" class="color-default">Agency</a></h5>
+
+                        <ul class="unstyled-list">
+                            <li><a href="http://n-ost.org/agency#the-editorial-team-for-foreign-reporting" class="color-default">The Editorial Team for Foreign Reporting</a></li>
+                            <li><a href="http://n-ost.org/agency#products" class="color-default">Our products</a></li>
+                            <li><a href="http://n-ost.org/agency#portfolio" class="color-default">Portfolio</a></li>
+                            <li><a href="http://n-ost.org/agency#references" class="color-default">References</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="content">
+                        <h5><a href="http://n-ost.org/network" class="color-default">Network</a></h5>
+                        <ul class="unstyled-list">
+                            <li><a href="http://n-ost.org/network#network_filter" class="color-default">Search Journalists</a></li>
+                            <li><a href="http://n-ost.org/network#network_location" class="color-default">Location</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="content">
+                        <h5><a href="http://n-ost.org/about-us" class="color-default">About Us</a></h5>
+
+                        <ul class="unstyled-list">
+                            <li><a href="http://n-ost.org/about-us#team" class="color-default">Team</a></li>
+                            <li><a href="http://n-ost.org/about-us#board" class="color-default">Board</a></li>
+                            <li><a href="http://n-ost.org/about-us#advisory-board" class="color-default">Advisory Board</a></li>
+                            <li><a href="http://n-ost.org/about-us#patrons-and-sponsers" class="color-default">Patrons and Sponsers</a></li>
+                            <li><a href="http://n-ost.org/about-us#cooperation-partners" class="color-default">Cooperation Partners</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col">
-            <div class="content">
-                <h5><a href="/network" class="color-default">Network</a></h5>
-                <ul class="unstyled-list">
-                    <li><a href="/network#network_filter" class="color-default">Search Journalists</a></li>
-                    <li><a href="/network#network_location" class="color-default">Location</a></li>
-                </ul>
+        <!-- /sub-footer -->
+
+        <footer class="contentbox footer border-bottom">
+            <div class="row text-uppercase">
+                <div class="col">
+                    <div class="content align-center">
+                        <a href="/"><img src="{{ url('static', filename='img/n-ost_logo_230.png') }}" alt="n-ost Logo" width="115"/></a>            
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="content">
+                        <address>
+                            Alexandrinenstraße 2-3<br>
+                            Aufgang C<br>
+                            D-10969 Berlin
+                        </address>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="content">
+                        <a href="tel:+493025932830" class="color-default">Tel. +49–(0)30–2593283–0</a>
+                        <a href="tel:+4930259328324" class="color-default">Fax +49–(0)30–2593283–24</a>
+                        <a class="js-email-link" rel="nofollow" href="mail [at] n-ost.org" data-target="mail[at]n-ost.org">mail&#064;n-ost.org</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="content align-center social-icons">
+                        <a href="https://twitter.com/n_ost" target="_blank" class="color-default"><i class="nost-icon nost-icon-twitter"></i></a>
+                        <a href="https://www.facebook.com/nost.online" target="_blank" class="color-default"><i class="nost-icon nost-icon-facebook"></i></a>
+                        <a href="https://vimeo.com/user5178008" target="_blank" class="color-default"><i class="nost-icon nost-icon-vimeo"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <div class="contentbox">
+            <div class="row no-border">
+                <div class="col last-footer text-uppercase">
+                    <a href="http://n-ost.org/67-impressum">Company Details</a>        </div>
+                </div>
             </div>
         </div>
-        <div class="col">
-            <div class="content">
-                <h5><a href="/about-us" class="color-default">About Us</a></h5>
-                
-<ul class="unstyled-list">
-        <li><a href="/about-us#team" class="color-default">Team</a></li>
-        <li><a href="/about-us#board" class="color-default">Board</a></li>
-        <li><a href="/about-us#advisory-board" class="color-default">Advisory Board</a></li>
-        <li><a href="/about-us#patrons-and-sponsers" class="color-default">Patrons and Sponsers</a></li>
-        <li><a href="/about-us#cooperation-partners" class="color-default">Cooperation Partners</a></li>
-</ul>
-            </div>
-        </div>
-    </div>
-    </div>
-<!-- /sub-footer -->
-
-<footer class="contentbox footer border-bottom">
-    <div class="row text-uppercase">
-        <div class="col">
-            <div class="content align-center">
-                <a href="/"><img src="{{ url('static', filename='img/n-ost_logo_230.png') }}" alt="n-ost Logo" width="115"/></a>            </div>
-        </div>
-        <div class="col">
-            <div class="content">
-                <address>
-                    Alexandrinenstraße 2-3<br>
-                    Aufgang C<br>
-                    D-10969 Berlin
-                </address>
-            </div>
-        </div>
-        <div class="col">
-            <div class="content">
-                <a href="tel:+493025932830" class="color-default">Tel. +49–(0)30–2593283–0</a>
-                <a href="tel:+4930259328324" class="color-default">Fax +49–(0)30–2593283–24</a>
-                <a class="js-email-link" rel="nofollow" href="mail [at] n-ost.org" data-target="mail[at]n-ost.org">mail&#064;n-ost.org</a>
-            </div>
-        </div>
-        <div class="col">
-            <div class="content align-center social-icons">
-                <a href="https://twitter.com/n_ost" target="_blank" class="color-default"><i class="nost-icon nost-icon-twitter"></i></a>
-                <a href="https://www.facebook.com/nost.online" target="_blank" class="color-default"><i class="nost-icon nost-icon-facebook"></i></a>
-                <a href="https://vimeo.com/user5178008" target="_blank" class="color-default"><i class="nost-icon nost-icon-vimeo"></i></a>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<div class="contentbox">
-    <div class="row no-border">
-        <div class="col last-footer text-uppercase">
-            <a href="/67-impressum">Company Details</a>        </div>
-    </div>
-</div>
-</div>
 
 
-<div class="modal fade" id="modalAjaxContent" tabindex="-1" role="dialog" aria-labelledby="modalAjaxContentLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        <div class="modal fade" id="modalAjaxContent" tabindex="-1" role="dialog" aria-labelledby="modalAjaxContentLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
-    <script src="{{ url('static', filename='js/jquery-1.11.3.min.js') }}"></script>
-    <script src="{{ url('static', filename='js/build.min.js') }}"></script>
-    <script src="{{ url('static', filename='js/datatables.min.js') }}"></script>
-    <script src="{{ url('static', filename='js/init.js') }}"></script>
-
+        <script src="{{ url('static', filename='js/jquery-1.11.3.min.js') }}"></script>
+        <script src="{{ url('static', filename='js/build.min.js') }}"></script>
+        <script src="{{ url('static', filename='js/datatables.min.js') }}"></script>
+        <script src="{{ url('static', filename='js/init.js') }}"></script>
 </body>
 </html>
