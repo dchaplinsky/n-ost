@@ -1,2 +1,1 @@
-devserver: cd registries; gunicorn -b 127.0.0.1:8080 -k aiohttp.worker.GunicornWebWorker -w 1 -t 60 --reload 'registry_app.main:init()'
 web: cd registries; gunicorn -k aiohttp.worker.GunicornWebWorker 'registry_app.main:init()' --log-file -

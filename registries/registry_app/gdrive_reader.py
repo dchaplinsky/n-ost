@@ -122,7 +122,7 @@ class XLSXDownloadClient(object):
 
     async def get_auth_token(self, session):
         SCOPES = ['https://spreadsheets.google.com/feeds']
-        credentials = AIOHTTPServiceAccountCredentials.from_json_keyfile_name(
+        credentials = AIOHTTPServiceAccountCredentials.from_json_keyfile_dict(
             self.credentials_file, SCOPES)
 
         await credentials.refresh(session)

@@ -4,3 +4,4 @@ registries/config/
 *.pyc
 __pycache__
 .DS_Store
+Procfile.local

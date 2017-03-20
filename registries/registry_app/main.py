@@ -1,3 +1,5 @@
+import os
+import json
 import asyncio
 import logging
 import pathlib
@@ -18,9 +20,10 @@ def init():
     # setup application and extensions
     app = web.Application(loop=loop)
 
-    # load config from yaml file in current dir
-    conf = load_config(str(pathlib.Path('.') / 'config' / 'registries.yaml'))
-    app['config'] = conf
+    app['config'] = {
+        "gdrive_config": json.loads(os.getenv("gdrive_config", "{}")),
+        "gdrive_spreadsheet_id": os.getenv("gdrive_spreadsheet_id", "")
+    }
 
     # setup Jinja2 template renderer
     aiohttp_jinja2.setup(
@@ -31,17 +34,3 @@ def init():
     setup_models(app)
 
     return app
-
-
-def main():
-    # init logging
-    logging.basicConfig(level=logging.DEBUG)
-
-    app = init()
-    web.run_app(app,
-                host=app['config']['host'],
-                port=app['config']['port'])
-
-
-if __name__ == '__main__':
-    main()
