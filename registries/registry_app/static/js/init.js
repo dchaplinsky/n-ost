@@ -20,6 +20,9 @@ $(document).ready(function() {
                 "targets": 5
             },
         ],
+
+        "dom": '<"top"flp<"clear">>rt<"bottom"ip<"clear">>',
+
         initComplete: function () {
             var self = this;
 
@@ -30,12 +33,12 @@ $(document).ready(function() {
             this.api().columns().every( function () {
                 var column = this;
                 if (column.index() == 0 || column.index() == 1) {
-                    var select = $('<select style="max-width: 100px"><option value=""></option></select>')
+                    var select = $('<select style="max-width: 100%"><option value=""></option></select>')
                         .appendTo( $(column.header()) )
-                        .on( 'click', function(e) {
+                        .on('click', function(e) {
                             e.stopPropagation();
                         })
-                        .on( 'change', function () {
+                        .on('change', function () {
                             var val = $.fn.dataTable.util.escapeRegex(
                                 $(this).val()
                             );
@@ -43,11 +46,51 @@ $(document).ready(function() {
                             column
                                 .search(val ? '^' + val + '$': '', true, false)
                                 .draw();
-                        } );
-     
-                    column.data().unique().sort().each( function ( d, j ) {
+                        });
+                    
+                    var top_countries = [
+                        "armenia", "azerbaijan", "belarus", "georgia", "moldova", "russia", "ukraine",
+                        "армения", "азербайджан", "беларусь", "грузия", "молдова", "россия", "украина",
+                    ];
+
+                    var options = column.data().unique().sort(function(a, b) {
+                        var ind_1 = top_countries.indexOf(a.toLowerCase()),
+                            ind_2 = top_countries.indexOf(b.toLowerCase());
+
+                        // First sort by elite set
+                        if (ind_1 != -1) {
+                            if (ind_2 != -1) {
+                                return ind_1 - ind_2;
+                            } else {
+                                return -1;
+                            }
+                        }
+
+                        if (ind_2 != -1) {
+                            return 1;
+                        }
+
+                        // If both elements aren't from elite set let's use standard sort
+                        if (a > b) {
+                            return 1;
+                        } else if (a == b) {
+                            return 0;
+                        } else {
+                            return -1;
+                        }
+                    });
+
+                    options.each( function ( d, j ) {
                         select.append( '<option value="'+d+'">'+d+'</option>' )
-                    } );
+                    });
+
+                    var chsn = select.chosen({
+                        "allow_single_deselect": true
+                    });
+
+                    select.siblings(".chosen-container").on('click', function(e) {
+                        e.stopPropagation();
+                    });
                 }
 
                 if (column.index() == 3 || column.index() == 4) {
@@ -74,7 +117,7 @@ $(document).ready(function() {
                             );
 
                             column
-                                .search(values.length ? '^' + values.join("|") + '$': '', true, false)
+                                .search('^' + values.join("|") + '$', true, false)
                                 .draw();
                         });
                     } );

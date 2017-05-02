@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 class RegistryModel(object):
-    uk_fields = {
+    ru_fields = {
         "страна": "country",
         "сектор": "sector",
         "Название": "title",
@@ -43,8 +43,8 @@ class RegistryModel(object):
             app.loop)
 
     @property
-    async def uk(self):
-        return await self._localized(self.uk_fields)
+    async def ru(self):
+        return await self._localized(self.ru_fields)
 
     @property
     async def en(self):
