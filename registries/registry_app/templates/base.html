@@ -45,31 +45,7 @@
             <div class="row">
                 <a href="/"><img src="{{ url('static', filename='img/n-ost_logo.png') }}" alt="n-ost Logo" class="logo"/></a>
                 <a class="toogle-menu color-default align-center js-toggle-menu" href="#"><span>&#9776;</span></a>
-
                 <nav class="menu js-menu-container">
-                    <ol class="unstyled-list active">
-                        {#                 <li><a href="/media-ngo" class="">Media NGO</a></li>
-                        <li><a href="/agency" class="">Agency</a></li>
-                        <li><a href="/network" class="active">Network</a></li>
-                        <li><a href="/about-us" class="">About Us</a></li> #}
-                    </ol>
-
-                    <form method="post" accept-charset="utf-8" id="jsSearchForm" class="toggle-flyout form-inline" action="/pages/search"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>                <input type="text" name="term" placeholder="Search" pattern=".*" required="required">
-                        <button title="Search"><i class="nost-icon nost-icon-search"></i></button>
-                    </form>
-                    <form method="post" accept-charset="utf-8" id="jsLoginForm" class="toggle-flyout login-form" action="/users/login">
-                        <div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>
-                        <h3>Member login </h3>
-                        <div class="input text required">
-                            <input type="text" name="username" placeholder="Username " pattern=".*" required="required" id="username"/>
-                        </div>
-                        <div class="input password required">
-                            <input type="password" name="password" placeholder="Password" pattern=".*" required="required" id="password" value=""/>
-                            <a href="/users/reset-password">Did you forget your password?</a>
-                        </div>
-
-                        <div><button>Log on</button></div>
-                    </form>
                     <div class="lang-switch-mobile align-center text-uppercase">
                         <a href="/language/de?redirect=%2Fnetzwerk">Russian</a> /English
                     </div>
@@ -80,19 +56,35 @@
                         <a href="/language/de?redirect=%2Fnetzwerk" title="Russian">Ru</a> /
                         EN
                     </div>
-                    <div class="user-login-search">
-                        <a href="#" class="js-toggle-form" data-target="#jsLoginForm"><i class="nost-icon nost-icon-login"></i></a>
-                        <a href="#" class="js-toggle-form" data-target="#jsSearchForm"><i class="nost-icon nost-icon-search"></i></a>
-                    </div>
                 </section>
-
             </div>
         </header>
         <article>
             <div class="contentbox bg-color-orange">
                 <div class="row">
                     <div class="col hero-slogan align-center">
-                        <h1>Over 150 links to different public registers and datasets had been collected by <span>n-vestigate</span> partners in searchable database to make journalistic research easier.</h1>
+                        {# Poor's man i18n #}
+                        {% if lang == "en" %}
+                            <p>
+                                You need data for your journalistic research? We show you where to find it!
+                            </p> 
+                            <p>
+                                n-vestigate metabase is a database of databases. It assembles over 150 links to different public registries, records and datasets across Eastern Europe and EU countries.
+                            </p>
+                            <p>
+                                Metabase is provided by n-vestigate – an investigative network hosted by n-ost and four other research partners from Eastern Europe. Find out more about the network here!
+                            </p>
+                        {% else %}
+                            <p>
+                                Вам нужны данные для  вашего журналистского расследования? Мы поможем вам их найти!
+                            </p>
+                            <p>
+                                Метабаза n-vestigate - это коллекция баз данных. В ней собраны более 150 ссылок на различные публичные реестры, открытые данные и базы данных в странах Восточной Европы и Евросоюза.
+                            </p>
+                            <p>
+                                Метабаза создана n-vestigate – инвестигативным сообществом, возникшем из тесного сотрудничества n-ost с четырьмя партнёрами из Восточной Европы. Узнайте больше о проекте n-vestigate здесь!
+                            </p>
+                        {% endif %}
                     </div>
                 </div>
 
@@ -102,8 +94,30 @@
                     <div class="row">
                         <div class="col align-center">
                             <span class="anchor" id="network_filter"></span>
-                            <h1 class="h0">Search registries</h1>
-                            <p>Our system allows finding a link to dataset needed through context search as well as using filters by: type of data, country, type of access (free/paid) and status (official/inofficial).</p>
+                            <h1 class="h0">
+                                {% if lang == "en" %}
+                                    Search registries
+                                {% else %}
+                                    Найти реестры
+                                {% endif %}
+                            </h1>
+
+                            {% if lang == "en" %}
+                                <p>
+                                    n-vestigate metabase helps you to find &amp; access existing databases.
+                                </p> 
+                                <p>
+                                    Group entries by country and sector, or apply filters for accessibility (free/paid/partly free) and status (official/unofficial). If you need support with research in other languages, or you know a database that is missing here, please find our HELP button below. Our service is free of charge.
+                                </p>
+                            {% else %}
+                                <p>
+                                    Метабаза n-vestigate поможет вам найти существующие базы данных и получить к ним доступ. 
+                                </p>
+                                <p>
+                                    Сгруппируйте базы данных по стране и сектору, или воспользуйтесь фильтром по условиям доступа (бесплатный/ платный/ частично бесплатный). 
+                                    Если вам нужна помощь с данными на иностранных языках или вам известны базы данных, которые пока еще отсутствуют в метабазе, пожалуйста, нажмите на кнопку ПОМОЩЬ внизу. Мы не взимаем платы за свои услуги.
+                                </p>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="row">

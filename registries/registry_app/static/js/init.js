@@ -1,18 +1,21 @@
 $(document).ready(function() {
     function escapeRegExp(str) {
-      return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+        return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
     }
 
-    $('#registry').DataTable( {
-        lengthChange: false,
-        pageLength: 30,
+    var reg_table = $('#registry'),
+        lang = reg_table.data("lang");
+
+    reg_table.DataTable( {
+        "lengthChange": false,
+        "pageLength": 30,
         "columnDefs": [
             {
-                "width": "100",
+                "width": "150",
                 "targets": [3, 4]
             },
             {
-                "width": "30%",
+                "width": "20%",
                 "targets": 2
             },
             {
@@ -20,6 +23,10 @@ $(document).ready(function() {
                 "targets": 5
             },
         ],
+
+        "language": {
+            "url": lang == "ru" ? "//cdn.datatables.net/plug-ins/1.10.15/i18n/Russian.json" : ""
+        },
 
         "dom": '<"top"flp<"clear">>rt<"bottom"ip<"clear">>',
 
@@ -48,10 +55,13 @@ $(document).ready(function() {
                                 .draw();
                         });
                     
-                    var top_countries = [
-                        "armenia", "azerbaijan", "belarus", "georgia", "moldova", "russia", "ukraine",
-                        "армения", "азербайджан", "беларусь", "грузия", "молдова", "россия", "украина",
-                    ];
+                    var top_countries_en = [
+                            "armenia", "azerbaijan", "belarus", "georgia", "moldova", "russia", "ukraine",
+                        ],
+                        top_countries_ru = [
+                            "армения", "азербайджан", "беларусь", "грузия", "молдова", "россия", "украина",
+                        ],
+                        top_countries = top_countries_ru + top_countries_en;
 
                     var options = column.data().unique().sort(function(a, b) {
                         var ind_1 = top_countries.indexOf(a.toLowerCase()),
@@ -81,11 +91,15 @@ $(document).ready(function() {
                     });
 
                     options.each( function ( d, j ) {
-                        select.append( '<option value="'+d+'">'+d+'</option>' )
+                        if (j == top_countries_en.length) {
+                            select.append('<option value="" disabled="disabled">————</option>')
+                        }
+                        select.append('<option value="' + d + '">' + d + '</option>')
                     });
 
                     var chsn = select.chosen({
-                        "allow_single_deselect": true
+                        "allow_single_deselect": true,
+                        "placeholder_text_single": " "
                     });
 
                     select.siblings(".chosen-container").on('click', function(e) {

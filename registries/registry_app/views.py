@@ -13,6 +13,7 @@ def get_lang(req, default="en"):
 @aiohttp_jinja2.template('index.html')
 async def index(request):
     lang = get_lang(request)
+
     registries = await getattr(request.app["model"], lang)
 
     return {
@@ -24,6 +25,8 @@ async def index(request):
 @aiohttp_jinja2.template('whitelabel.html')
 async def whitelabel(request):
     lang = get_lang(request)
+    set_default_locale(lang)
+
     registries = await getattr(request.app["model"], lang)
 
     return {
