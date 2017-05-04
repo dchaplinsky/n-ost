@@ -1,9 +1,9 @@
 <!doctype html>
-<!--[if lt IE 7 ]> <html class="ie ie6 ie-lt10 ie-lt9 ie-lt8 ie-lt7 no-js" lang="en"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie ie7 ie-lt10 ie-lt9 ie-lt8 no-js" lang="en"> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie ie8 ie-lt10 ie-lt9 no-js" lang="en"> <![endif]-->
-<!--[if IE 9 ]>    <html class="ie ie9 ie-lt10 no-js" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!--[if lt IE 7 ]> <html class="ie ie6 ie-lt10 ie-lt9 ie-lt8 ie-lt7 no-js" lang="{{ lang }}"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 ie-lt10 ie-lt9 ie-lt8 no-js" lang="{{ lang }}"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 ie-lt10 ie-lt9 no-js" lang="{{ lang }}"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 ie-lt10 no-js" lang="{{ lang }}"> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="{{ lang }}"><!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,16 +45,10 @@
             <div class="row">
                 <a href="/"><img src="{{ url('static', filename='img/n-ost_logo.png') }}" alt="n-ost Logo" class="logo"/></a>
                 <a class="toogle-menu color-default align-center js-toggle-menu" href="#"><span>&#9776;</span></a>
-                <nav class="menu js-menu-container">
-                    <div class="lang-switch-mobile align-center text-uppercase">
-                        <a href="/language/de?redirect=%2Fnetzwerk">Russian</a> /English
-                    </div>
-                </nav>
-
                 <section class="lang-switch-user-box">
                     <div class="lang-switch align-center">
-                        <a href="/language/de?redirect=%2Fnetzwerk" title="Russian">Ru</a> /
-                        EN
+                        {% if lang != "en" %}<a href="?lang=en" title="English">EN</a>{% else %} EN {% endif %} /
+                        {% if lang != "ru" %}<a href="?lang=ru" title="Russian">Ru</a>{% else %} Ru {% endif %}
                     </div>
                 </section>
             </div>
