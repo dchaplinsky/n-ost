@@ -31,3 +31,15 @@
 .hero-slogan p {
 	color: white;
 }
+
+table.dataTable thead th, table.dataTable thead td {
+    padding: 10px;
+}
+
+.chosen-results {
+    text-align: left;
+}
+
+#reg-description {
+    padding-top: 20px;
+}

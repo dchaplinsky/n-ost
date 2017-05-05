@@ -56,7 +56,7 @@
         <article>
             <div class="contentbox bg-color-orange">
                 <div class="row">
-                    <div class="col hero-slogan align-center">
+                    <div class="col hero-slogan">
                         {# Poor's man i18n #}
                         {% if lang == "en" %}
                             <p>
@@ -84,18 +84,9 @@
 
 
                 <!-- contentbox -->
-                <div class="contentbox bg-color-grey border-bottom">
+                <div class="contentbox bg-color-grey border-bottom" id="reg-description">
                     <div class="row">
-                        <div class="col align-center">
-                            <span class="anchor" id="network_filter"></span>
-                            <h1 class="h0">
-                                {% if lang == "en" %}
-                                    Search registries
-                                {% else %}
-                                    Найти реестры
-                                {% endif %}
-                            </h1>
-
+                        <div class="col">
                             {% if lang == "en" %}
                                 <p>
                                     n-vestigate metabase helps you to find &amp; access existing databases.

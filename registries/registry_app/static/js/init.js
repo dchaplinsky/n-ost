@@ -9,19 +9,40 @@ $(document).ready(function() {
     reg_table.DataTable( {
         "lengthChange": false,
         "pageLength": 30,
+        "autoWidth": false,
+        "ordering": false,
+
         "columnDefs": [
             {
-                "width": "150",
-                "targets": [3, 4]
+                "width": "10%",
+                "orderable": false,
+                "targets": 0
             },
             {
                 "width": "20%",
+                "orderable": false,
+                "targets": 1
+            },
+            {
+                "width": "20%",
+                "orderable": true,
                 "targets": 2
             },
             {
+                "width": "20%",
+                "orderable": false,
+                "targets": 3
+            },
+            {
+                "width": "15%",
+                "orderable": false,
+                "targets": 4
+            },
+            {
+                "width": "15%",
                 "orderable": false,
                 "targets": 5
-            },
+            }
         ],
 
         "language": {
@@ -91,7 +112,7 @@ $(document).ready(function() {
                     });
 
                     options.each( function ( d, j ) {
-                        if (j == top_countries_en.length) {
+                        if (column.index() == 0  && j == top_countries_en.length) {
                             select.append('<option value="" disabled="disabled">————</option>')
                         }
                         select.append('<option value="' + d + '">' + d + '</option>')
@@ -99,7 +120,8 @@ $(document).ready(function() {
 
                     var chsn = select.chosen({
                         "allow_single_deselect": true,
-                        "placeholder_text_single": " "
+                        "placeholder_text_single": " ",
+                        "width": column.index() == 0 ? "130px": "200px"
                     });
 
                     select.siblings(".chosen-container").on('click', function(e) {
